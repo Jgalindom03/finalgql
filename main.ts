@@ -3,9 +3,9 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import mongoose from "mongoose";
 
 import { typeDefs } from "./gql/schema.ts";
-import { Query } from "./gql/Query.ts";
-import { Mutation } from "./gql/Mutation.ts";
-
+import { Query } from "./resolvers/Query.ts";
+import { Mutation } from "./resolvers/Mutation.ts";
+import { Contactog } from "./resolvers/Contactogq.ts";
 const MONGO_URL = Deno.env.get("MONGO_URL");
 
 if (!MONGO_URL) {
@@ -20,6 +20,7 @@ const server = new ApolloServer({
   resolvers: {
     Query,
     Mutation,
+    Contactog
   }
 });
 
